@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0A0A0B;
+  --bg-surface: #121215;
+  --bg-surface-elevated: #18181D;
+  --text-primary: #F4F3EE;
+  --text-muted: #8E8E93;
+  --text-subtle: #545458;
+  --accent-lime: #D4FF3F;
+  --accent-lime-dim: rgba(212, 255, 63, 0.12);
+  --accent-lime-glow: rgba(212, 255, 63, 0.25);
+  --border-subtle: rgba(244, 243, 238, 0.08);
+  --border-active: rgba(212, 255, 63, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  scroll-behavior: auto; /* Handled smoothly by Lenis */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Custom Text Selection */
+::selection {
+  background: #D4FF3F;
+  color: #0A0A0B;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #D4FF3F;
+  color: #0A0A0B;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4FF3F;
+}
+
+/* Noise overlay styling */
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(18, 18, 21, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 243, 238, 0.08);
+}
+
+.glass-panel-glow {
+  background: rgba(18, 18, 21, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 255, 63, 0.2);
+  box-shadow: 0 0 30px rgba(212, 255, 63, 0.05);
+}
+
+/* Typography styles */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(244, 243, 238, 0.25);
+  color: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-stroke:hover {
+  -webkit-text-stroke: 1px #D4FF3F;
+  color: rgba(212, 255, 63, 0.1);
+}
+
+/* Custom Cursor Hide default on desktop */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Grid background line pattern */
+.grid-lines {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(244, 243, 238, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 243, 238, 0.02) 1px, transparent 1px);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
